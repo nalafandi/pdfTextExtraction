@@ -1,9 +1,10 @@
 !pip install pymupdf pandas
 import fitz
 
+#Open file
 pdf_document = fitz.open("/wsh.pdf")
 
-
+#Define number of pages in the file
 page1 = pdf_document[0]
 page2 = pdf_document[1]
 page3 = pdf_document[2]
@@ -17,6 +18,7 @@ page10 = pdf_document[9]
 page11 = pdf_document[10]
 page12 = pdf_document[11]
 
+#Wrap text from pages
 text1 = page1.get_text("words", sort=True)
 text2 = page2.get_text("words", sort=True)
 text3 = page3.get_text("words", sort=True)
@@ -30,11 +32,10 @@ text10 = page10.get_text("words", sort=True)
 text11 = page11.get_text("words", sort=True)
 text12 = page12.get_text("words", sort=True)
 
-
-
+#Merge all text in one string
 text = text1 + text2 + text3 + text4 + text5 + text6 + text7 + text8 + text9 + text10 + text11 + text12
 
-
+#Loop through
 for i, word in enumerate(text):
 
   txt = word[4]
@@ -45,5 +46,5 @@ for i, word in enumerate(text):
       print(contract + " " + total)
 
 
-
+#Close document
 pdf_document.close()
